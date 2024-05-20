@@ -7,7 +7,7 @@ const Home = () => {
       <Header />
       <h1 className="font-bold text-2xl my-5">카카오톡 파일 첨부</h1>
 
-      <div className="flex justify-center items-center relative">
+      <div className="flex justify-center items-center relative mt-14">
         <img
           src="/image/speechBubble.png"
           alt="말풍선"
@@ -36,7 +36,7 @@ const Home = () => {
         className="ml-[50%]"
       />
 
-      <div className="flex items-center gap-2 ml-[10%] font-bold hover:cursor-pointer">
+      <div className="flex items-center gap-2 mt-14 font-bold hover:cursor-pointer">
         <img src="/image/book.png" alt="첨부방법" />
         <div>파일 첨부 방법</div>
       </div>

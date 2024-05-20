@@ -9,7 +9,7 @@ const Loading = () => {
         <img
           src="/image/loadingClock.png"
           alt="로딩 시계"
-          className="absolute left-8"
+          className="absolute left-[14%]"
         />
         <img
           src="/image/loadingCharacter.png"
