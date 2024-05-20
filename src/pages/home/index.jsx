@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../components/Header";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -16,7 +17,7 @@ const Home = () => {
         />
         <div className="flex flex-col items-center gap-2 absolute">
           <label
-            for="file"
+            htmlFor="file"
             className="material-symbols-outlined block text-8xl cursor-pointer"
           >
             file_present
@@ -36,10 +37,13 @@ const Home = () => {
         className="ml-[50%]"
       />
 
-      <div className="flex items-center gap-2 mt-14 font-bold hover:cursor-pointer">
+      <Link
+        to="/explain"
+        className="flex items-center gap-2 mt-14 font-bold hover:cursor-pointer"
+      >
         <img src="/image/book.png" alt="첨부방법" />
         <div>파일 첨부 방법</div>
-      </div>
+      </Link>
     </div>
   );
 };
