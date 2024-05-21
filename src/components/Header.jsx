@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <div>
       {(pathname === "/explain" || pathname === "/recommand") && (
-        <Link to="/home">
+        <Link to="/" state={{ pathname: pathname }}>
           <span className="material-symbols-outlined mb-5 hover:cursor-pointer">
             arrow_back_ios
           </span>
