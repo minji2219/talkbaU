@@ -7,7 +7,7 @@ const Start = () => {
   }, 3000);
   return (
     <div
-      className={`h-[calc(100vh-128px)] mb-16 bg-white flex flex-col gap-10 justify-center items-center ${startDisplay} duration-700 ease-out`}
+      className={`-my-16 h-[100vh] bg-white flex flex-col gap-10 justify-center items-center ${startDisplay} duration-700 ease-out`}
     >
       <img src="/image/mainCharacter.png" alt="메인케릭터" />
       <img src="/image/logo.png" alt="logo" />
