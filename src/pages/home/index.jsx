@@ -48,14 +48,14 @@ const Home = () => {
     // 로딩 페이지로 넘어가기
     // 에러 뜨면 error창 띄우고 다시 첨부 페이지로 넘어가기
     // 결과 도착하면 recommand페이지 띄우기
-  }
+  };
 
   return (
-    <div className="relative">
+    <div className="">
       {state?.pathname !== "/explain" && state?.pathname !== "/recommand" && (
         <Start />
       )}
-      <div className={`absolute top-16  ${homezIndex} duration-700 w-[100%]`}>
+      <div className={`relative ${homezIndex} duration-700 w-[100%]`}>
         <Header />
         <h1 className="font-bold text-2xl my-5">카카오톡 파일 첨부</h1>
         <div className="flex justify-center items-center mt-14">
@@ -72,9 +72,20 @@ const Home = () => {
             >
               file_present
             </label>
-            <input type="file" id="file" accept=".txt" required onChange={validationFile} className="hidden" />
+            <input
+              type="file"
+              id="file"
+              accept=".txt"
+              required
+              onChange={validationFile}
+              className="hidden"
+            />
             {/* config파일에 색 지정 */}
-            <button disabled={recommandBtnDisabled} onClick={handleSubmit} className="px-4 py-2 bg-[#D9D9D9] rounded-md font-extrabold text-lg hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed">
+            <button
+              disabled={recommandBtnDisabled}
+              onClick={handleSubmit}
+              className="px-4 py-2 bg-[#D9D9D9] rounded-md font-extrabold text-lg hover:opacity-80 disabled:opacity-60 disabled:cursor-not-allowed"
+            >
               추천 받기
             </button>
             <div className="text-sm">카카오톡 대화 파일을 첨부해보세요!</div>
