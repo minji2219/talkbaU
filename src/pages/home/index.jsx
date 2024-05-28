@@ -1,39 +1,50 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "../../components/Header";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Start from "./Start";
+import axios from "axios";
+import { giftContext } from "../../context/giftsContext";
 
 const Home = () => {
   const [homezIndex, setHomezIndex] = useState("-z-10");
-  const [fileName,setFileName] = useState();
+  const [file,setFile] = useState();
   const [recommandBtnDisabled,setRecommandBtnDisabled] = useState(true);
   const { state } = useLocation();
-
+  const naviagte = useNavigate();
+  const {setGifts} = useContext(giftContext)
   setTimeout(() => {
     setHomezIndex("z-10");
   }, 3000);
 
   const validationFile = (e)=>{
-    if(e.target.files[0]?.type === "text/plain"){
-      setFileName(e.target.files[0]?.name)
+    // 파일 사이즈
+    // e.target.files[0].size
+    const file = e.target.files[0];
+    if(file?.type === "text/plain"){
+      const formData = new FormData();
+      formData.append('file',file)
+      setFile(formData)
       setRecommandBtnDisabled(false)
       return;
     }
     alert("text 형태의 파일만 첨부가 가능합니다.")
   }
+  const handleSubmit = async() =>{
+    
+    try{
+      naviagte('/loading') 
+      const result = await axios.post("/file/attach", file,{
+        method: "POST",
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      })
+      setGifts(result.data)
+      naviagte('/recommand')
+    }catch(err){
+      alert("서버 에러 입니다:",err)
+    }
 
-  const handleSubmit = () =>{
-    fetch("/file/attach", {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        fileName:fileName
-      }),
-    })
-      .then(res => res.json())
-      .then(data => console.log(data))
     // 로딩 페이지로 넘어가기
     // 에러 뜨면 error창 띄우고 다시 첨부 페이지로 넘어가기
     // 결과 도착하면 recommand페이지 띄우기
