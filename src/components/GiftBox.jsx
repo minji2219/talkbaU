@@ -2,8 +2,8 @@ import React from "react";
 
 const GiftBox = ({giftNum,gift,description}) => {
   return (
-    <div className="flex items-start gap-5 border-b-2 py-5">
-      <img src={`/image/gift${giftNum}.png`} alt="선물1" />
+    <div className="flex items-center gap-5 border-b-2 py-5">
+      <img src={`/image/gift${giftNum}.png`} alt={`선물${1}`} width={100}/>
       <div>
         <div className="text-xl font-extrabold rounded-md">{gift}</div>
         <div>

@@ -9,9 +9,11 @@ const Home = () => {
   const [homezIndex, setHomezIndex] = useState("-z-10");
   const [file,setFile] = useState();
   const [recommandBtnDisabled,setRecommandBtnDisabled] = useState(true);
+
   const { state } = useLocation();
   const naviagte = useNavigate();
   const {setGifts} = useContext(giftContext)
+
   setTimeout(() => {
     setHomezIndex("z-10");
   }, 3000);
@@ -33,21 +35,19 @@ const Home = () => {
     
     try{
       naviagte('/loading') 
-      const result = await axios.post("/file/attach", file,{
+      const result = await axios.post("/recommand", file,{
         method: "POST",
         headers: {
           'Content-Type': 'multipart/form-data',
         },
       })
       setGifts(result.data)
+      console.log(result.data)
       naviagte('/recommand')
     }catch(err){
       alert("서버 에러 입니다:",err)
+      naviagte('/')
     }
-
-    // 로딩 페이지로 넘어가기
-    // 에러 뜨면 error창 띄우고 다시 첨부 페이지로 넘어가기
-    // 결과 도착하면 recommand페이지 띄우기
   };
 
   return (
