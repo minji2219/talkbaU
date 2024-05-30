@@ -1,5 +1,4 @@
 from flask import Flask,jsonify,request
-import json
 from recommand import recommand_gift,string_to_array
 from openai_recommand import get_completion
 

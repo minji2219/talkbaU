@@ -14,7 +14,7 @@ const Explain = () => {
         더보기 &lt; 대화 내용 &lt; 대화 내보내기
       </div>
       <img src="/image/kakaoFile.jpg" alt="대화 내보내기" />
-      <div className="relative flex gap-2 mt-3 float-right">
+      <div className="relative flex gap-2 mt-3  mb-10 float-right">
         <img src="/image/speechBubbleSmall.png" alt="말풍선" />
         <div className="w-[150px] text-xs text-red-500 absolute top-12 left-5">
           ※ 모바일에서 추출한 파일은 추천이 이루어지지 않습니다.
