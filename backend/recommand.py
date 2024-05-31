@@ -46,11 +46,11 @@ def recommand_gift(file):
     #뽑은 단어 " "로 합치기
     extracted_words = ""
     for word, _ in tags:
-        extracted_words += word + " "
+        extracted_words += word + ", "
 
-    prompt = "%s 해당 단어들을 많이 쓰는 사람에게 적당한 선물 5개를 간략한 추천 이유와 함께 선물만 말해줘. 예를 들어, '1. 수영복 : 수영이라는 단어를 많이 사용하는 사람인걸 보니 ... ~' 이런식으로 말해줘."%(extracted_words)
-    response = get_completion(prompt)
-
+    prompt = "%s 해당 단어들을 많이 쓰는 사람에게 적당한 선물을 5개 물건 이름으로만 간략한 추천 이유와 함께 말해줘." %(extracted_words)
+      
+    response = get_completion(prompt,[])
     res_array = string_to_array(str(response[-1]))
     
     res_array.append(user_name)
@@ -59,22 +59,23 @@ def recommand_gift(file):
     return res_array
 
 def string_to_array(str):
+
     new_json = str.replace("\'","\"")
     new_json = new_json.replace("\n"," ")
     new_json = json.loads(new_json,strict=False)
     new_json = new_json['content']
+    
     # 항목 숫자와 점(.), 공백으로 시작하는 패턴을 기준으로 분리
     pattern = r'\d+\.\s'
 
     # 텍스트를 패턴으로 분리, 분리된 항목 앞에 숫자와 점을 붙여줌
     split_text = re.split(pattern, new_json)
     items = [f"{i}. {item.strip()}" for i, item in enumerate(split_text) if item]
-
+    print(items)
     data_array=[]
     data_object = {}
 
     for line in items:
-
         first = line.split(". ")
         second = first[1].split(": ")
 
