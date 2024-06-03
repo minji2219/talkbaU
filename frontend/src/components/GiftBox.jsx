@@ -4,7 +4,7 @@ const GiftBox = ({giftNum,gift,description}) => {
   return (
     <div className="flex items-center gap-5 border-b-2 py-5">
       <img src={`/image/gift${giftNum}.png`} alt={`선물${1}`} width={100}/>
-      <div>
+      <div className="flex-1">
         <div className="text-xl font-extrabold rounded-md">{gift}</div>
         <div>
           {description}

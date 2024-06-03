@@ -7,6 +7,7 @@ from  openai_recommand import get_completion
 def recommand_gift(file):
     # df = open("../%s"%(file), encoding = 'UTF-8')
     # front에게 받은 파일 열기
+
     df = file.read()
     df = df.decode('utf-8')
     df = df.split('\n')
@@ -47,10 +48,11 @@ def recommand_gift(file):
     extracted_words = ""
     for word, _ in tags:
         extracted_words += word + ", "
-
-    prompt = "%s 해당 단어들을 많이 쓰는 사람에게 적당한 선물을 5개 물건 이름으로만 간략한 추천 이유와 함께 말해줘." %(extracted_words)
+    print(extracted_words)
+    prompt = """%s 해당 단어들을 많이 쓰는 사람에게 적당한 선물을 5개 물건 이름과 추천 이유 100자와 함께 다음 형식으로 작성해주세요.
+1. (추천 선물): (추천 이유 100자)""" %(extracted_words)
       
-    response = get_completion(prompt,[])
+    response = get_completion(prompt, [])
     res_array = string_to_array(str(response[-1]))
     
     res_array.append(user_name)
@@ -71,7 +73,9 @@ def string_to_array(str):
     # 텍스트를 패턴으로 분리, 분리된 항목 앞에 숫자와 점을 붙여줌
     split_text = re.split(pattern, new_json)
     items = [f"{i}. {item.strip()}" for i, item in enumerate(split_text) if item]
+
     print(items)
+
     data_array=[]
     data_object = {}
 
