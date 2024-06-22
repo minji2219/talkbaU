@@ -49,8 +49,16 @@ def recommand_gift(file):
     for word, _ in tags:
         extracted_words += word + ", "
     print(extracted_words)
-    prompt = """%s 해당 단어들을 많이 쓰는 사람에게 적당한 선물을 5개 물건 이름과 추천 이유 100자와 함께 다음 형식으로 작성해주세요.
-1. (추천 선물): (추천 이유 100자)""" %(extracted_words)
+    prompt = """다음 작업을 수행하세요.
+1 - %s 해당 단어들을 많이 쓰는 사람에게 알맞는 선물 5개 추천해주세요.
+2 - 추천 이유 존댓말로 100자 알려주세요.
+3 - 다음 형식을 사용해서 출력해주세요.
+###example###
+ 1. 운동복: 운동이라는 단어를 많이 쓰는 것을 보니 운동을 즐기는 사람같습니다. 운동을 즐기는 사람에게는 멋진 운동복을 선물하세요.
+ 2. 선물이름: 선물추천이유
+ 3. 선물이름: 선물추천이유
+ 4. 선물이름: 선물추천이유
+ 5. 선물이름: 선물추천이유""" %(extracted_words)
       
     response = get_completion(prompt, [])
     res_array = string_to_array(str(response[-1]))
