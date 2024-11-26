@@ -2,7 +2,10 @@
 
 > 카카오톡 대화 분석을 통한 선물 추천 웹/앱
 
-![image](https://github.com/user-attachments/assets/46e981be-ed8d-4f9d-88c2-0314e312fc38)![image](https://github.com/user-attachments/assets/beec74e5-4be7-40fa-860e-03eb896cd731)
+<img src="https://github.com/user-attachments/assets/46e981be-ed8d-4f9d-88c2-0314e312fc38"/> <img align="right" src="https://github.com/user-attachments/assets/beec74e5-4be7-40fa-860e-03eb896cd731"/>
+
+
+
 
 ### 배포
 **FE**: <https://talkba-u.vercel.app>
